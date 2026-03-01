@@ -1,23 +1,16 @@
 import React from 'react';
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-  LineChart, Line, PieChart, Pie, Cell, AreaChart, Area, ComposedChart, LabelList
+  Line, PieChart, Pie, Cell, AreaChart, Area, LabelList
 } from 'recharts';
 import { 
   BarChart3, 
   TrendingUp, 
   Table as TableIcon, 
-  LineChart as LineIcon, 
-  PieChart as PieIcon, 
-  AreaChart as AreaIcon, 
-  LayoutGrid,
-  ChevronDown,
   ArrowUpDown,
   Layers,
   Activity,
-  Maximize2,
-  Settings2,
-  Filter
+  Settings2
 } from 'lucide-react';
 
 interface ChartStyle {
@@ -381,7 +374,7 @@ const ChartRenderer: React.FC<ChartProps> = ({ data, config }) => {
                 radius={isStacked ? [0, 0, 0, 0] : isHorizontal ? [0, 6, 6, 0] : [6, 6, 0, 0]} 
                 barSize={isStacked ? 36 : 24}
               >
-                {configStyle.show_labels && <LabelList dataKey={s} position={isHorizontal ? "right" : "top"} style={{ fontSize: '10px', fontWeight: 'bold', fill: '#9ca3af' }} formatter={(v: number) => new Intl.NumberFormat('en', { notation: 'compact' }).format(v)} />}
+                {configStyle.show_labels && <LabelList dataKey={s} position={isHorizontal ? "right" : "top"} style={{ fontSize: '10px', fontWeight: 'bold', fill: '#9ca3af' }} formatter={(v: any) => new Intl.NumberFormat('en', { notation: 'compact' }).format(Number(v))} />}
               </Bar>
             ))}
           </BarChart>
@@ -406,7 +399,7 @@ const ChartRenderer: React.FC<ChartProps> = ({ data, config }) => {
                 fillOpacity={group_by ? 0.2 : 0.4} 
                 strokeWidth={4} 
               >
-                {configStyle.show_labels && <LabelList dataKey={s} position="top" style={{ fontSize: '10px', fontWeight: 'bold', fill: '#9ca3af' }} formatter={(v: number) => new Intl.NumberFormat('en', { notation: 'compact' }).format(v)} />}
+                {configStyle.show_labels && <LabelList dataKey={s} position="top" style={{ fontSize: '10px', fontWeight: 'bold', fill: '#9ca3af' }} formatter={(v: any) => new Intl.NumberFormat('en', { notation: 'compact' }).format(Number(v))} />}
               </Area>
             ))}
             {showTrend && (
@@ -428,7 +421,7 @@ const ChartRenderer: React.FC<ChartProps> = ({ data, config }) => {
               nameKey={x_axis} 
               animationDuration={1500}
             >
-              {data.map((entry, index) => <Cell key={`cell-${index}`} fill={colors[index % colors.length]} stroke="transparent" />)}
+              {data.map((_, index) => <Cell key={`cell-${index}`} fill={colors[index % colors.length]} stroke="transparent" />)}
             </Pie>
             <Tooltip content={<CustomTooltip />} />
             <Legend verticalAlign="bottom" height={40} iconType="circle" />

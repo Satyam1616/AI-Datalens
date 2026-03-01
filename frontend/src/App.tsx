@@ -5,14 +5,11 @@ import {
   Sun, 
   Moon, 
   Database, 
-  CheckCircle, 
-  XCircle, 
   LayoutDashboard, 
   Settings, 
   BarChart3,
   Search,
-  ChevronRight,
-  Zap
+  ChevronRight
 } from 'lucide-react';
 import axios from 'axios';
 import { clsx, type ClassValue } from 'clsx';
@@ -26,7 +23,7 @@ function App() {
   const [activeTab, setActiveTab] = useState<'chat' | 'schema'>('chat');
   const [darkMode, setDarkMode] = useState(false);
   const [dbStatus, setDbStatus] = useState<{ connected: boolean; db?: string; error?: string } | null>(null);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen] = useState(true);
 
   useEffect(() => {
     checkDbStatus();
