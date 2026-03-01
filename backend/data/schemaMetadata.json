@@ -1,0 +1,26 @@
+{
+  "tables": [
+    {
+      "table": "sales",
+      "description": "Contains all customer purchase transactions",
+      "columns": {
+        "id": "Primary key for the sale",
+        "revenue": "Total sale amount in USD",
+        "region": "Customer region (e.g., North, South, East, West)",
+        "order_date": "Date of purchase",
+        "product_name": "Name of the product sold",
+        "quantity": "Number of units sold"
+      }
+    },
+    {
+      "table": "products",
+      "description": "Inventory of all products sold",
+      "columns": {
+        "id": "Primary key for the product",
+        "name": "Name of the product",
+        "category": "Product category (e.g., Electronics, Clothing, etc.)",
+        "price": "Unit price of the product"
+      }
+    }
+  ]
+}
